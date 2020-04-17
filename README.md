@@ -2,7 +2,7 @@
 > 原生的多图上传组件，不依赖任何类库，高效灵活轻量
 
 ## 在线演示
-
+示例地址：https://liyupi.github.io/yu-image-uploader/
 
 ## 使用方法 
 复制 `YuImageUploader.jsx` 和 `YuImageUploader.css` 到项目中，引入组件即可。
