@@ -35,12 +35,12 @@ class Example extends React.Component {
    * @param evt
    * @param index
    */
-  doUpload(evt, index) {
+  doUpload(evt, index = -1) {
     // 此处默认实现，仅用作展示
     const {picList} = this.state;
     let newPicList = [...picList];
     // 替换
-    if (index) {
+    if (index >= 0) {
       newPicList[index] = evt.target.result;
     } else {
       // 新增
