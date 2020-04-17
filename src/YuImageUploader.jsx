@@ -23,10 +23,6 @@ class MyImageUploader extends React.Component {
     accept: 'image/*',
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   onFileChange(e, index = -1) {
     const imgFile = e.target.files[0];
     // validate size
