@@ -9,6 +9,7 @@
 ```jsx harmony
 <YuImageUploader data={picList} count={5} size={MAX_SIZE} 
                  accept='image/png, image/jpg'
+                 disabled={false}
                  onChange={this.doChange} 
                  onDelete={this.doDelete}
 />
@@ -22,6 +23,7 @@
 - accept：接受的图片格式
 - size：接受的图片最大尺寸
 - count: 最大图片数量
+- disabled: 是否禁用（上传中）
 - onChange：新增或替换图片时触发。参数 event,（事件） file（文件）, index（替换文件下标，新增时无该属性）
 - onDelete: 删除图片时触发。参数 data（当前图片列表）
 

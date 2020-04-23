@@ -14,6 +14,7 @@ class MyImageUploader extends React.Component {
     count: PropTypes.number,
     accept: PropTypes.string,
     size: PropTypes.number,
+    disabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
   };
@@ -21,6 +22,7 @@ class MyImageUploader extends React.Component {
   static defaultProps = {
     count: 1,
     accept: 'image/*',
+    disabled: false
   };
 
   onFileChange(e, index = -1) {
@@ -31,22 +33,17 @@ class MyImageUploader extends React.Component {
       alert('图片过大！');
       return;
     }
-    // read file
-    const reader = new FileReader();
-    reader.onload = evt => {
-      const {data, count} = this.props;
-      if (index < 0 && data.length < count) {
-        this.doAddPic(e, imgFile);
-        return;
-      }
-      if (data.length > index) {
-        this.doReplacePic(e, imgFile, index);
-        return;
-      }
-      console.error(`picture change error, out of index!`);
-      alert('图片加载错误！');
-    };
-    reader.readAsDataURL(imgFile);
+    const {data, count} = this.props;
+    if (index < 0 && data.length < count) {
+      this.doAddPic(e, imgFile);
+      return;
+    }
+    if (data.length > index) {
+      this.doReplacePic(e, imgFile, index);
+      return;
+    }
+    console.error(`picture change error, out of index!`);
+    alert('图片加载错误！');
   }
 
   /**
@@ -84,7 +81,7 @@ class MyImageUploader extends React.Component {
   }
 
   render() {
-    const {data, count, accept} = this.props;
+    const {data, count, accept, disabled} = this.props;
 
     const addImgView = (
       <div className="add-img-btn img-box">
@@ -112,7 +109,7 @@ class MyImageUploader extends React.Component {
         {data && data.map((pic, index) => {
           return showImgView(pic, index);
         })}
-        {data && data.length < count && addImgView}
+        {!disabled && data && data.length < count && addImgView}
       </div>
     );
   }
