@@ -1,5 +1,5 @@
 # 鱼皮-多图上传组件（YuImageUploader）
-> 原生的多图上传组件，不依赖任何类库，高效灵活轻量
+> React版本的自实现多图上传组件，不依赖其他任何类库，高效灵活轻量
 
 ## 在线演示
 示例地址：https://yu-image-uploader.now.sh/
