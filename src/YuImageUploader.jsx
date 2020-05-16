@@ -27,6 +27,7 @@ class MyImageUploader extends React.Component {
 
   onFileChange(e, index = -1) {
     const imgFile = e.target.files[0];
+    console.log(imgFile);
     // validate size
     const {size} = this.props;
     if (size && imgFile.size > size) {
@@ -80,13 +81,17 @@ class MyImageUploader extends React.Component {
     alert('图片加载错误！');
   }
 
+  clearInput(e) {
+    e.target.value = null;
+  }
+
   render() {
     const {data, count, accept, disabled} = this.props;
 
     const addImgView = (
       <div className="add-img-btn img-box">
         <div className="plus-icon">+</div>
-        <input type="file" name="files" className="add-img-input" accept={accept}
+        <input type="file" name="files" className="add-img-input" accept={accept} onClick={this.clearInput}
                onChange={this.onFileChange.bind(this)}/>
       </div>
     );
@@ -96,7 +101,7 @@ class MyImageUploader extends React.Component {
         <div className="show-img img-box" key={index}>
           <img src={url} alt={`图片${index}`}/>
           <div className="mask">
-            <input type="file" name="files" className="add-img-input" accept={accept}
+            <input type="file" name="files" className="add-img-input" accept={accept} onClick={this.clearInput}
                    onChange={e => this.onFileChange(e, index)}/>
             <div className="close-btn" onClick={this.onDelete.bind(this, index)}>×</div>
           </div>
